@@ -1,3 +1,5 @@
+#! coding: utf-8
+
 """
 Django settings for hrms project.
 
@@ -11,10 +13,17 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))).split('/')[:-1]
+BASE_DIR = ('/').join(BASE_DIR)
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))   #多个app集中放入到apps目录下时需要
+sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))  # 添加extra_apps目录到环境变量；
 
+# print BASE_DIR
+# print os.path.join(BASE_DIR,'../apps')
+# print os.path.join(BASE_DIR,'../extra_apps')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -27,6 +36,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#重载user模块,APP名称+class
+AUTH_USER_MODEL = "users.UserProfile"
 
 # Application definition
 
@@ -37,7 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hr.apps.HrConfig',
+    # 'hr.apps.HrConfig',
+    'xadmin',
+    'crispy_forms',
+    'users',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -65,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media',   #配置这行让html支持 MEDID_URL
             ],
         },
     },
@@ -106,18 +121,27 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'  #中文支持，django1.8以后支持；1.8以前是zh-cn
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
+USE_TZ = False   #默认是Ture，时间是utc时间，由于我们要用本地时间，所用手动修改为false！！！！
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    (os.path.join(BASE_DIR, 'static'))
+]
+
+#文件上传路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
