@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'users',
+    'staff',
 ]
 
 MIDDLEWARE_CLASSES = [
