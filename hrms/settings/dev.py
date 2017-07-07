@@ -4,6 +4,9 @@ __date__ = '2017/7/4 10:45'
 
 from hrms.settings.base import *
 
+
+ALLOWED_HOSTS=['*']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

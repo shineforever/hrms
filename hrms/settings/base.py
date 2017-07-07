@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'hr.apps.HrConfig',
     'xadmin',
     'crispy_forms',
     'users',
@@ -137,7 +136,7 @@ USE_TZ = False   #默认是Ture，时间是utc时间，由于我们要用本地�
 
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     (os.path.join(BASE_DIR, 'static'))
