@@ -16,7 +16,7 @@ class DepartmentAdmin(object):
 
 class PositionAdmin(object):
     list_display = ['name','department']
-    search_fields = ['name']
+    search_fields = ['name','department__name']
     list_filter = ['name']
 
 

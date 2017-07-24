@@ -15,7 +15,7 @@ class Department(models.Model):
     name = models.CharField(max_length=20,verbose_name=u'部门名称')
 
     class Meta:
-        verbose_name = u"部门名称"
+        verbose_name = u"部门"
         verbose_name_plural = verbose_name
 
     def __unicode__(self):
@@ -25,8 +25,8 @@ class Position(models.Model):
     """
     职位
     """
-    name = models.CharField(max_length=20, verbose_name=u'职位名称')
-    department = models.ForeignKey(Department,name=u'所属部门',blank=True,null=True,on_delete=models.SET_NULL)
+    name = models.CharField(max_length=20, verbose_name=u'职位')
+    department = models.ForeignKey(Department,verbose_name=u'所属部门',blank=True,null=True,on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = u"职位名称"
@@ -78,7 +78,7 @@ class Staff(models.Model):
     email = models.EmailField(verbose_name=u'电子邮箱',null=True,blank=True,max_length=100)
 
     class Meta:
-        verbose_name = u"职员信息"
+        verbose_name = u"职员"
         verbose_name_plural = verbose_name
 
     def __unicode__(self):
