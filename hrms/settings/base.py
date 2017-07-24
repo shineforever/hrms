@@ -138,9 +138,9 @@ USE_TZ = False   #默认是Ture，时间是utc时间，由于我们要用本地�
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [
-    (os.path.join(BASE_DIR, 'static'))
-]
+# STATICFILES_DIRS = [
+#     (os.path.join(BASE_DIR, 'static'))
+# ]
 
 #文件上传路径
 MEDIA_URL = '/media/'

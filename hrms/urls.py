@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """hrms URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,7 +18,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+import xadmin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/', admin.site.urls),
+    url(r'^xadmin/', xadmin.site.urls),
 ]

@@ -14,5 +14,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '!@#QWE',    ## 安装 mysql 数据库时，输入的 root 用户的密码
         'HOST': '127.0.0.1',
+        'OPTIONS':{
+        "init_command":"SET foreign_key_checks = 0;",
+         }
     }
 }
